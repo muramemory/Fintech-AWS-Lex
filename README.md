@@ -16,7 +16,7 @@ Created an Amazon Lex robot chat for simple investmest portfolio recommendations
 
 ### Summary
 
-The Robo advisor tested well in the lambda function in regards to the for loop limites on age and investment and not in the front end interface.
+The Robo advisor tested well in the lambda function in regards to the for loop limites on age and investment and but not in the front end interface.
 
 ![image.jpg](Images_Icons/age_correct.png)
 ![image.jpg](Images_Icons/age_error.png)
