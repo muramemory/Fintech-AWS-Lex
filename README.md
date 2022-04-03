@@ -1,2 +1,6 @@
 # Fintech-AWS-Lex
-Creating a AWS robo advisor
+## Robo Investment Portfolio Advisor  
+
+
+
+![image.jpg](Images_Icons/robot_helper.jpg)
