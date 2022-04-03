@@ -1,0 +1,204 @@
+{
+  "metadata": {
+    "schemaVersion": "1.0",
+    "importType": "LEX",
+    "importFormat": "JSON"
+  },
+  "resource": {
+    "name": "RoboAdvisor",
+    "version": "1",
+    "intents": [
+      {
+        "rejectionStatement": {
+          "messages": [
+            {
+              "contentType": "PlainText",
+              "content": "I will be pleased to assist you in the future."
+            }
+          ]
+        },
+        "name": "RecommendPortfolio",
+        "version": "11",
+        "fulfillmentActivity": {
+          "codeHook": {
+            "uri": "arn:aws:lambda:us-west-2:574383678706:function:recommendPortfolio",
+            "messageVersion": "1.0"
+          },
+          "type": "CodeHook"
+        },
+        "sampleUtterances": [
+          "I want to save money for my retirement",
+          "I'm {age} and I would like to invest for my retirement",
+          "I'm {age} and I want to invest for my retirement",
+          "I want the best option to invest for my retirement",
+          "I'm worried about my retirement",
+          "I want to invest for my retirement",
+          "I would like to invest for my retirement",
+          "Hi",
+          "Hello",
+          "Hey"
+        ],
+        "slots": [
+          {
+            "sampleUtterances": [],
+            "slotType": "AMAZON.NUMBER",
+            "obfuscationSetting": "DEFAULT_OBFUSCATION",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "How old are you?"
+                }
+              ],
+              "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\"}",
+              "maxAttempts": 2
+            },
+            "priority": 2,
+            "defaultValueSpec": {
+              "defaultValueList": []
+            },
+            "name": "age"
+          },
+          {
+            "sampleUtterances": [],
+            "slotType": "AMAZON.FirstName",
+            "obfuscationSetting": "NONE",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "Thank you for trusting me to help, could you please give me your name?"
+                }
+              ],
+              "maxAttempts": 2
+            },
+            "priority": 1,
+            "name": "firstName"
+          },
+          {
+            "sampleUtterances": [],
+            "slotType": "AMAZON.NUMBER",
+            "obfuscationSetting": "NONE",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "How much do you want to invest?"
+                }
+              ],
+              "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\"}",
+              "maxAttempts": 2
+            },
+            "priority": 3,
+            "defaultValueSpec": {
+              "defaultValueList": []
+            },
+            "name": "investmentAmount"
+          },
+          {
+            "sampleUtterances": [],
+            "slotType": "riskLevel",
+            "slotTypeVersion": "2",
+            "obfuscationSetting": "NONE",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "How much risk do you want to take?"
+                }
+              ],
+              "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\",\"genericAttachments\":[{\"imageUrl\":\"https://raw.githubusercontent.com/muramemory/Fintech-AWS-Lex/main/Images/low_button.png\",\"subTitle\":\"Low Risk\",\"title\":\"Low\",\"buttons\":[{\"text\":\"Low\",\"value\":\"Low\"},{\"text\":\"Very Low\",\"value\":\"Very Low\"}]},{\"imageUrl\":\"https://raw.githubusercontent.com/muramemory/Fintech-AWS-Lex/main/Images/mid_button.png\",\"subTitle\":\"Medium Risk\",\"title\":\"Medium\",\"buttons\":[{\"text\":\"Mid\",\"value\":\"Medium\"}]},{\"imageUrl\":\"https://raw.githubusercontent.com/muramemory/Fintech-AWS-Lex/main/Images/high_button.png\",\"subTitle\":\"High Risk\",\"title\":\"High\",\"buttons\":[{\"text\":\"High\",\"value\":\"High\"},{\"text\":\"Very High\",\"value\":\"Very High\"}]},{\"imageUrl\":\"https://raw.githubusercontent.com/muramemory/Fintech-AWS-Lex/main/Images/none.png\",\"subTitle\":\"None\",\"title\":\"None\",\"buttons\":[{\"text\":\"None\",\"value\":\"None\"}]}]}",
+              "maxAttempts": 2
+            },
+            "priority": 4,
+            "defaultValueSpec": {
+              "defaultValueList": []
+            },
+            "name": "riskLevel"
+          }
+        ],
+        "confirmationPrompt": {
+          "messages": [
+            {
+              "contentType": "PlainText",
+              "content": "Would you like me to search for the best investment portfolio for you now?"
+            }
+          ],
+          "maxAttempts": 3
+        }
+      }
+    ],
+    "slotTypes": [
+      {
+        "name": "riskLevel",
+        "version": "2",
+        "enumerationValues": [
+          {
+            "value": "High",
+            "synonyms": [
+              "High"
+            ]
+          },
+          {
+            "value": "Very Low",
+            "synonyms": [
+              "Very Low"
+            ]
+          },
+          {
+            "value": "Low",
+            "synonyms": [
+              "Low"
+            ]
+          },
+          {
+            "value": "Medium",
+            "synonyms": [
+              "Mid"
+            ]
+          },
+          {
+            "value": "Very High",
+            "synonyms": [
+              "Very High"
+            ]
+          },
+          {
+            "value": "None",
+            "synonyms": [
+              "None"
+            ]
+          }
+        ],
+        "valueSelectionStrategy": "TOP_RESOLUTION"
+      }
+    ],
+    "voiceId": "Nicole",
+    "childDirected": false,
+    "locale": "en-AU",
+    "idleSessionTTLInSeconds": 300,
+    "clarificationPrompt": {
+      "messages": [
+        {
+          "contentType": "PlainText",
+          "content": "Sorry, can you please repeat that?"
+        }
+      ],
+      "maxAttempts": 3
+    },
+    "abortStatement": {
+      "messages": [
+        {
+          "contentType": "PlainText",
+          "content": "Sorry, I could not understand. Goodbye."
+        }
+      ]
+    },
+    "detectSentiment": false,
+    "enableModelImprovements": true
+  }
+}
